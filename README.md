@@ -17,7 +17,7 @@ steps:
   - name: Setup Golang
     uses: actions/setup-go@v3
     with:
-      go-version: ~1.18
+      go-version: 1.19
 
   - name: Setup Golang caches
     uses: actions/cache@v3
