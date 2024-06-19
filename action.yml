@@ -25,7 +25,7 @@ runs:
       run: >
         echo '::warning title=Action gacts/setup-go-with-cache is deprecated::Since actions/setup-go now supports
         caching and restoring go modules and build outputs, this action is no longer necessary. Please use
-        `actions/setup-go` directly. To migrate, simply replace "uses: gacts/setup-go-with-cache@v1"
+        `actions/setup-go` directly. To migrate, simply replace `uses: gacts/setup-go-with-cache@v1`
         with `uses: actions/setup-go@v5` (or later) in your workflow file. Read more details here:
         https://github.com/actions/setup-go?tab=readme-ov-file#caching-dependency-files-and-build-outputs'
 
