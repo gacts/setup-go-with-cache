@@ -20,7 +20,7 @@ jobs:
       - uses: gacts/gitleaks@v1
 
   run-this-action:
-    name: Run action (${{ matrix.runs-on }})
+    name: Run action (${{ matrix.runs-on }}, Go ${{ matrix.go-version }})
     runs-on: ${{ matrix.runs-on }}
     strategy:
       fail-fast: false
