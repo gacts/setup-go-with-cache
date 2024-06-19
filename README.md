@@ -49,18 +49,6 @@ steps:
 > [!TIP]
 > Use [Dependabot][use_dependabot] to maintain your `gacts/setup-go-with-cache` version updated in your GitHub workflows.
 
-## Customizing
-
-### Inputs
-
-The following inputs can be used as `step.with` keys:
-
-| Name               |        Default        | Required | Description                                                          |
-|--------------------|:---------------------:|:--------:|----------------------------------------------------------------------|
-| `go-version`       |       `<none>`        |    no    | The Go version to install                                            |
-| `go-version-file`  |       `<none>`        |    no    | Path to the go.mod or go.work file, determines Golang version to use |
-| `cache-key-suffix` |       `<none>`        |    no    | Optional cache key suffix                                            |
-| `github-token`     | `${{ github.token }}` |    no    | GitHub token (for requesting the latest version info)                |
 ## Support
 
 [![Issues][badge_issues]][link_issues]
