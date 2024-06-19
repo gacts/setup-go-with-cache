@@ -1,4 +1,7 @@
-name: tests
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+# docs: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions
+
+name: 🧪 Tests
 
 on:
   push:
@@ -10,24 +13,22 @@ on:
 
 jobs:
   gitleaks:
-    name: Gitleaks
+    name: Check for GitLeaks
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with: {fetch-depth: 0}
-
-      - name: Check for GitLeaks
-        uses: gacts/gitleaks@v1 # Action page: <https://github.com/gacts/gitleaks>
+      - {uses: actions/checkout@v4, with: {fetch-depth: 0}}
+      - uses: gacts/gitleaks@v1
 
   run-this-action:
-    name: Run action (${{ matrix.runs-on }})
+    name: Run action (${{ matrix.runs-on }}, Go ${{ matrix.go-version }})
     runs-on: ${{ matrix.runs-on }}
     strategy:
       fail-fast: false
       matrix:
         runs-on: [ubuntu-latest, windows-latest] # macos-latest
+        go-version: [1.19, 1.22]
     steps:
       - uses: actions/checkout@v4
-
       - name: Run this action
         uses: ./
+        with: {go-version: '${{ matrix.go-version }}'}

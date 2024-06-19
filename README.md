@@ -8,7 +8,16 @@
 [![Build Status][badge_build]][link_build]
 [![License][badge_license]][link_license]
 
-Composite GitHub Action which combines the perfect pairing of [actions/setup-go](https://github.com/actions/setup-go) with [actions/cache](https://github.com/actions/cache) for the caching of both the Golang module and build caches _(the original action idea was taken [here](https://github.com/magnetikonline/action-golang-cache))_.
+> [!CAUTION]
+> Since `actions/setup-go` now supports caching and restoring go modules and build outputs, this action is no longer
+> necessary. Please use `actions/setup-go` directly.
+> To migrate, simply replace `uses: gacts/setup-go-with-cache@v1` with `uses: actions/setup-go@v5` (or later) in
+> your workflow file. Read more
+> [details here](https://github.com/actions/setup-go?tab=readme-ov-file#caching-dependency-files-and-build-outputs).
+
+Composite GitHub Action which combines the perfect pairing of [actions/setup-go](https://github.com/actions/setup-go) with [actions/cache](https://github.com/actions/cache) for
+the caching of both the Golang module and build caches _(the original action idea was taken
+[here](https://github.com/magnetikonline/action-golang-cache))_.
 
 Reducing all these workflow steps:
 
@@ -17,7 +26,7 @@ steps:
   - name: Setup Golang
     uses: actions/setup-go@v3
     with:
-      go-version: 1.19
+      go-version: 1.22
 
   - name: Setup Golang caches
     uses: actions/cache@v3
@@ -34,19 +43,18 @@ Down to this:
 
 ```yaml
 steps:
-  - uses: gacts/setup-go-with-cache@v1
-    with: {go-version: 1.19}
+  - {uses: gacts/setup-go-with-cache@v1, with: {go-version: 1.22}}
 ```
 
 Or using `go-version-file` for version selection:
 
 ```yaml
 steps:
-  - uses: gacts/setup-go-with-cache@v1
-    with: {go-version-file: go.mod}
+  - {uses: gacts/setup-go-with-cache@v1, with: {go-version-file: go.mod}}
 ```
 
-> Tip: Use [Dependabot][use_dependabot] to maintain your `gacts/setup-go-with-cache` version updated in your GitHub workflows.
+> [!TIP]
+> Use [Dependabot][use_dependabot] to maintain your `gacts/setup-go-with-cache` version updated in your GitHub workflows.
 
 ## Support
 
