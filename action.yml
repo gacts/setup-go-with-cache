@@ -23,7 +23,7 @@ runs:
   steps:
     - shell: bash
       run: >
-        echo "::warning title=Action gacts/setup-go-with-cache is deprecated::Since actions/setup-go now supports
+        echo -e "::warning title=Action gacts/setup-go-with-cache is deprecated::Since actions/setup-go now supports
         caching and restoring go modules and build outputs, this action is no longer necessary. Please use
         'actions/setup-go' directly.\n\nTo migrate, simply replace 'uses: gacts/setup-go-with-cache@v1'
         with 'uses: actions/setup-go@v5' (or later) in your workflow file. Read more details here:
