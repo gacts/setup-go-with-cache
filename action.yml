@@ -6,11 +6,17 @@ description: Setup a Go environment and add it to the PATH, additionally enable 
 inputs:
   go-version:
     description: The Go version to download (if necessary) and use. Supports semver spec and ranges
+    required: false
   go-version-file:
     description: Path to the go.mod or go.work file, determines Golang version to use. Used in place of `go-version` input
+    required: false
   cache-key-suffix:
     description: Optional cache key suffix
     default: ''
+  github-token:
+    description: GitHub auth token. Since there's a default, this is typically not supplied by the user
+    required: false
+    default: ${{ github.token }}
 
 runs:
   using: composite
@@ -20,6 +26,7 @@ runs:
       with:
         go-version: ${{ inputs.go-version }}
         go-version-file: ${{ inputs.go-version-file }}
+        token: ${{ inputs.github-token }}
 
     - name: Determine Golang cache paths
       id: golang-path
